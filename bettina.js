@@ -166,15 +166,18 @@ jQuery(document).ready(function () {
                 "http://storage.ubertor.com/bettinareid2.ourubertor.com/content/image/26571.jpg"
             ];
             var link = [
-                [["Under $800,000", "under_800000"],
-                    ["$800,000 - $950,000", "800000-950000"],
-                    ["Over $950,000", "over_950000"]],
+                [["Under 500,000", "under_500000"],
+                    ["$500,000 - $650,000", "500000-650000"],
+                    ["Over $650,000", "over_650000"]],
                 [["Under $300,000", "under_300000"],
                     ["$300,000 - $400,000", "300000-400000"],
                     ["Over $400,000", "over_400000"]],
                 [["Under $200,000", "under_200000"],
                     ["$200,000 - $300,000", "200000-300000"],
-                    ["Over $300,000", "over_300000"]]
+                    ["Over $300,000", "over_300000"]],
+                [["Under $800,000", "under_800000"],
+                    ["$800,000 - $950,000", "800000-950000"],
+                    ["Over $950,000", "over_950000"]]
             ];
             var level = (d.level) ? '.level_' + d.level : '.level_5';
             for (ctr = 0; ctr < 3; ctr++) {
@@ -246,13 +249,30 @@ jQuery(document).ready(function () {
                     ]
                     pretitle = '';
                     break;
+                case 2:
+                    var clss = (d.belowWidgetUseClass) ? d.prelink : '';
+                    belowWidgets = [
+                        '<a href="/'+clss+'houses_under_800000" class="price-range under">UNDER $800,000</a>' +
+                        '<a href="/'+clss+'houses_800000-850000" class="price-range between">$800,000 - $950,000</a>' +
+                        '<a href="/'+clss+'houses_over_over_950000" class="price-range over">OVER $950,000</a>',
+                        '<a href="/'+clss+'townhouses_under_300000" class="price-range under">UNDER $300,000</a>' +
+                        '<a href="/'+clss+'townhouses_300000-400000" class="price-range between">$300,000 - $400,000</a>' +
+                        '<a href="/'+clss+'townhouses_over_400000" class="price-range over">OVER $400,000</a>',
+                        '<a href="/'+clss+'condos_under_200000" class="price-range under">UNDER $200,000</a>' +
+                        '<a href="/'+clss+'condos_200000-300000" class="price-range between">$200,000 - $300,000</a>' +
+                        '<a href="/'+clss+'condos_over_300000" class="price-range over">OVER $300,000</a>'
+                    ]
+                    break;
+                    [["Under ", "under_"],
+                        ["", ""],
+                        ["Over ", ""]]
             }
             var link = ["houses", "townhouses", "condos"];
 
             for (ctr = 0; ctr < 3; ctr++) {
                 var new_link = prelink.replace('\\\/', '_') + '_' + link[ctr];
                 new_link = new_link.replace('__', '_');
-                if(jQuery('body').hasClass(link[ctr]) && jQuery('body').hasClass('level_3') && jQuery('body').hasClass('listings_by_type')){
+                if(jQuery('body').hasClass(d.classname) && jQuery('body').hasClass('level_3') && jQuery('body').hasClass('listings_by_type')){
                     new_link=link[ctr];
                 }
                 content +=
@@ -408,7 +428,7 @@ jQuery(document).ready(function () {
     }
     /*-----All South Surrey / White Rock-----*/
     if (jQuery('body').hasClass('all_south_surrey_and_white_rock_houses')) {
-        var details = {level: 3, tp: true, pr: 0, nb: 3, classname: 'all_south_surrey_and_white_rock_houses', prelink: 'south_surrey_white_rock_houses_', title: 'SOUTH SURREY/WHITE ROCK HOUSES', nbTitle: 'South Surrey / White Rock', postTitle: true};
+        var details = {level: 3, tp: true, pr: 3, nb: 3, classname: 'all_south_surrey_and_white_rock_houses', prelink: 'south_surrey_white_rock_houses_', title: 'SOUTH SURREY/WHITE ROCK HOUSES', nbTitle: 'South Surrey / White Rock', postTitle: true};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('all_south_surrey_and_white_rock_townhouses')) {
@@ -538,7 +558,7 @@ jQuery(document).ready(function () {
     //South Surrey White Rock
     /*-----Listing By Neighbourhood Elgin/Chantrell-----*/
     if (jQuery('body').hasClass('elgin\/chantrell_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'elgin\\/chantrell_houses', prelink: 'elgin_chantrell_houses_', postTitle: true , prTitle: 'Elgin Chantrell Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'elgin\\/chantrell_houses', prelink: 'elgin_chantrell_houses_', postTitle: true , prTitle: 'Elgin Chantrell Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('elgin\/chantrell_townhouses')) {
@@ -560,7 +580,7 @@ jQuery(document).ready(function () {
 
     //Sunnyside Park Surrey
     if (jQuery('body').hasClass('sunnyside_park_surrey_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'sunnyside_park_surrey_houses', prelink: 'sunnyside_park_surrey_houses_', postTitle: true , prTitle: 'Sunnyside Park Surrey Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'sunnyside_park_surrey_houses', prelink: 'sunnyside_park_surrey_houses_', postTitle: true , prTitle: 'Sunnyside Park Surrey Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('sunnyside_park_surrey_townhouses')) {
@@ -582,7 +602,7 @@ jQuery(document).ready(function () {
 
     //Crescent Beach/Ocean Park
     if (jQuery('body').hasClass('crescent_beach\/ocean_park_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'crescent_beach\\/ocean_park_houses', prelink: 'crescent_beach_ocean_park_houses_', postTitle: true , prTitle: 'Cresent Beach Ocean Park Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'crescent_beach\\/ocean_park_houses', prelink: 'crescent_beach_ocean_park_houses_', postTitle: true , prTitle: 'Cresent Beach Ocean Park Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('elgin\/chantrell_townhouses')) {
@@ -604,7 +624,7 @@ jQuery(document).ready(function () {
 
     //White Rock
     if (jQuery('body').hasClass('white_rock_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'white_rock_houses', prelink: 'white_rock_houses_', postTitle: true , prTitle: 'White Rock Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'white_rock_houses', prelink: 'white_rock_houses_', postTitle: true , prTitle: 'White Rock Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('white_rock_townhouses')) {
@@ -626,7 +646,7 @@ jQuery(document).ready(function () {
 
     //King George Corridor
     if (jQuery('body').hasClass('king_george_corridor_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'king_george_corridor_houses', prelink: 'king_george_corridor_houses_', postTitle: true , prTitle: 'King George Corridor Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'king_george_corridor_houses', prelink: 'king_george_corridor_houses_', postTitle: true , prTitle: 'King George Corridor Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('king_george_corridor_townhouses')) {
@@ -648,7 +668,7 @@ jQuery(document).ready(function () {
 
     //Hazelmere
     if (jQuery('body').hasClass('hazelmere_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'hazelmere_houses', prelink: 'hazelmere_houses_', postTitle: true , prTitle: 'Hazelmere Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'hazelmere_houses', prelink: 'hazelmere_houses_', postTitle: true , prTitle: 'Hazelmere Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('hazelmere_townhouses')) {
@@ -670,7 +690,7 @@ jQuery(document).ready(function () {
 
     //Grandview Heights
     if (jQuery('body').hasClass('grandview_heights_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'grandview_heights_houses', prelink: 'grandview_heights_houses_', postTitle: true , prTitle: 'Grandview Heights Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'grandview_heights_houses', prelink: 'grandview_heights_houses_', postTitle: true , prTitle: 'Grandview Heights Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('grandview_heights_townhouses')) {
@@ -692,7 +712,7 @@ jQuery(document).ready(function () {
 
     //Morgan Creek
     if (jQuery('body').hasClass('morgan_creek_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'morgan_creek_houses', prelink: 'morgan_creek_houses_', postTitle: true , prTitle: 'Morgan Creek Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'morgan_creek_houses', prelink: 'morgan_creek_houses_', postTitle: true , prTitle: 'Morgan Creek Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('morgan_creek_townhouses')) {
@@ -714,7 +734,7 @@ jQuery(document).ready(function () {
 
     //Pacific Douglas
     if (jQuery('body').hasClass('pacific_douglas_houses')) {
-        var details = {tp: true, pr: 0, nb: 3, bw: false, classname: 'pacific_douglas_houses', prelink: 'pacific_douglas_houses_', postTitle: true , prTitle: 'Pacific Douglas Houses', nbTitle: 'South Surrey / White Rock'};
+        var details = {tp: true, pr: 3, nb: 3, bw: false, classname: 'pacific_douglas_houses', prelink: 'pacific_douglas_houses_', postTitle: true , prTitle: 'Pacific Douglas Houses', nbTitle: 'South Surrey / White Rock'};
         xWidget.initialize(details);
         xWidget.changeTopNavTitle(details);
     } else if (jQuery('body').hasClass('pacific_douglas_townhouses')) {
