@@ -252,7 +252,7 @@ jQuery(document).ready(function () {
             for (ctr = 0; ctr < 3; ctr++) {
                 var new_link = prelink.replace('\\\/', '_') + '_' + link[ctr];
                 new_link = new_link.replace('__', '_');
-                new_link = (!pretitle) ? link[ctr] : new_link;
+                //new_link = (!pretitle) ? link[ctr] : new_link;
                 if(jQuery('body').is('.'+link[ctr]+',.level_3,.listing_by_type')){
                     new_link=link[ctr];
                 }
