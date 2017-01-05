@@ -1,7 +1,6 @@
 /* Widget fix for all properties page and afc-listings */
 
 jQuery(document).ready(function () {
-    alert('test2');
     var xWidget = {
         content: "",
         wrapper_open: "<div style='text-align: center;'><ul>",
@@ -254,7 +253,7 @@ jQuery(document).ready(function () {
                 var new_link = prelink.replace('\\\/', '_') + '_' + link[ctr];
                 new_link = new_link.replace('__', '_');
                 new_link = (!pretitle) ? link[ctr] : new_link;
-                if(jQuery('body').is('.'+link[ctr]+',.level_3')){
+                if(jQuery('body').is('.'+link[ctr]+',.level_3,listing_by_type')){
                     new_link=link[ctr];
                 }
                 content +=
