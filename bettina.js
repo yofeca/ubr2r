@@ -251,13 +251,10 @@ jQuery(document).ready(function () {
 
             for (ctr = 0; ctr < 3; ctr++) {
                 var new_link = prelink.replace('\\\/', '_') + '_' + link[ctr];
-                console.log(new_link);
                 new_link = new_link.replace('__', '_');
-                //new_link = (!pretitle) ? link[ctr] : new_link;
                 if(jQuery('body').hasClass(link[ctr]) && jQuery('body').hasClass('level_3') && jQuery('body').hasClass('listing_by_type')){
                     new_link=link[ctr];
                 }
-                console.log(new_link);
                 content +=
                         '<div class="col-xs-12 col-sm-4">' +
                         '<div class="strip-right">' +
