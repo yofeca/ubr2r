@@ -1,7 +1,7 @@
 /* Widget fix for all properties page and afc-listings */
 
 jQuery(document).ready(function () {
-    alert('test');
+    alert('test2');
     var xWidget = {
         content: "",
         wrapper_open: "<div style='text-align: center;'><ul>",
