@@ -254,7 +254,7 @@ jQuery(document).ready(function () {
                 console.log(new_link);
                 new_link = new_link.replace('__', '_');
                 //new_link = (!pretitle) ? link[ctr] : new_link;
-                if(jQuery('body').is('.'+link[ctr]+',.level_3,.listing_by_type')){
+                if(jQuery('body').hasClass(link[ctr]) && jQuery('body').hasClass('level_3') && jQuery('body').hasClass('listing_by_type')){
                     new_link=link[ctr];
                 }
                 console.log(new_link);
